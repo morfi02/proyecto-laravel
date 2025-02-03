@@ -22,6 +22,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'juan_curbelo@cifpzonzamas.es',
             'password' => Hash::make('password'),
         ]);
+        
+        User::factory()->create([
+            'name' => 'jmorfi',
+            'email' => 'morfijorge489@gmail.com',
+            'password' => Hash::make('jmorfi'),
+        ]);
 
     }
 }

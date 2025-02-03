@@ -21,6 +21,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// nuevo
+Route::middleware(['auth', 'is_admin'])->group(function () {
+    Route::resource('libros', LibroController::class)->except(['index', 'show']);
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/libros', [LibroController::class, 'index']);
+    Route::get('/libros/{libro}', [LibroController::class, 'show']);
+});
+
 
 
 Route::get('/libros'       , [LibroController::class, 'listado'])->name('libros.listado');
